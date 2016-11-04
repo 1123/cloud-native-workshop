@@ -1,7 +1,7 @@
 ---
 applications:
 - name: hystrix-dashboard
-  host: hystrix-dashboard-${random-word}
+  host: hystrix-dashboard
   path: target/hystrix-dashboard.jar
   services:
       - config-service

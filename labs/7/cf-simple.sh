@@ -1,18 +1,13 @@
+cf create-service p-rabbitmq standard message-bus
 
 cd config-service
 cf push
-# run cf apps to get the URL of config-service,
-# or note it from the "urls" output of the `cf push`
-# and place it in the next line where it says _URL_
-cf cups config-service -p '{"uri":"http://config-service-unfiercely-alkalimetry.cfapps.io"}'
+cf cups config-service -p '{"uri":"http://config-service.local2.pcfdev.io"}'
 cd ..
 
 cd eureka-service
 cf push
-# run cf apps to get the URL of eureka-service,
-# or note it from the "urls" output of the `cf push`,
-# and place it in the next line where it says _URL_
-cf cups eureka-service -p '{"uri":"http://eureka-service-rooted-subquarter.cfapps.io"}'
+cf cups eureka-service -p '{"uri":"http://eureka-service.local2.pcfdev.io"}'
 cd ..
 
 cd reservation-service
@@ -21,4 +16,8 @@ cd ..
 
 cd reservation-client
 cf push
+cd ..
+
+cd hystrix-dashboard
+cf push 
 cd ..
