@@ -1,8 +1,8 @@
 ---
 applications:
 - name: eureka-service
-  host: eureka-service-${random-word}
-  memory: 512M
+  host: eureka-service
+  memory: 256M
   path: target/eureka-service.jar
   services:
       - config-service
