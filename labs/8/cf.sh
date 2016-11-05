@@ -1,12 +1,13 @@
 #!/bin/bash
 set -e
+set -u
 
 #
 # the big CloudFoundry installer
 #
 
-CLOUD_DOMAIN=${DOMAIN:-run.pivotal.io}
-CLOUD_TARGET=api.${DOMAIN}
+CLOUD_DOMAIN=local2.pcfdev.io
+CLOUD_TARGET=api.${CLOUD_DOMAIN}
 
 function login(){
     cf api | grep ${CLOUD_TARGET} || cf api ${CLOUD_TARGET} --skip-ssl-validation
@@ -54,7 +55,7 @@ function deploy_hystrix_dashboard(){
 
 
 function deploy_reservation_service(){
-    cf cs elephantsql turtle reservations-postgresql
+    cf cs p-mysql 512mb reservations-postgresql
     deploy_app reservation-service
 }
 

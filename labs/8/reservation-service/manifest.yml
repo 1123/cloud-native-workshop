@@ -2,9 +2,10 @@
 applications:
 - name: reservation-service
   path: target/reservation-service.jar
-  host: reservation-service-${random-word}
-  memory: 512M
+  host: reservation-service
+  memory: 712M
   services:
+    - message-bus
     - config-service
     - eureka-service
   env:
