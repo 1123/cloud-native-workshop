@@ -1,0 +1,12 @@
+---
+applications:
+- name: zipkin-service
+  path: target/zipkin-service-0.0.1.jar
+  host: zipkin-service
+  memory: 712M
+  services:
+    - config-service
+    - eureka-service
+  env:
+    DEBUG: "true"
+    SPRING_PROFILES_ACTIVE: cloud
